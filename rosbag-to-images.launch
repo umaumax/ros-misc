@@ -1,0 +1,11 @@
+<launch>
+  <arg name="rosbag" default="$(env PWD)/default.bag"/>
+  <arg name="image_topic" default="/xxx/yyy"/>
+  <arg name="output_dir" default="$(env PWD)/images"/>
+  <arg name="filename_format" default="frame%04d.png"/>
+  <node pkg="rosbag" type="play" name="rosbag" args="-d 2 $(arg rosbag)"/>
+  <node name="extract" pkg="image_view" type="extract_images" respawn="false" output="screen">
+    <remap from="image" to="$(arg image_topic)"/>
+    <param name="filename_format" value="$(arg output_dir)/$(arg filename_format)" />
+  </node>
+</launch>
