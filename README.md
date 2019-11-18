@@ -1,4 +1,24 @@
-# roslaunch examples
+# ros misc
+
+## print ros time
+```
+pip3 install --user rospkg
+pip3 install --user PyYaml
+```
+
+```
+#!/usr/bin/env python3
+
+import rospy
+
+def main():
+    rospy.init_node('rostime')
+    now = rospy.get_rostime()
+    rospy.loginfo("Current time %i %i", now.secs, now.nsecs)
+
+if __name__ == '__main__':
+    main()
+```
 
 ## rosbag-to-image.launch
 * NOTE
